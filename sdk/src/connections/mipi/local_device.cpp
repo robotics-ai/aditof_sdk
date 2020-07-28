@@ -893,7 +893,7 @@ aditof::Status LocalDevice::waitForBuffer(struct VideoDev *dev = nullptr) {
     FD_ZERO(&fds);
     FD_SET(dev->fd, &fds);
 
-    tv.tv_sec = 4;
+    tv.tv_sec = 10;
     tv.tv_usec = 0;
 
     r = select(dev->fd + 1, &fds, NULL, NULL, &tv);
