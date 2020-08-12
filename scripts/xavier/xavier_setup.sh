@@ -1,5 +1,13 @@
 #!/bin/bash
 
+exec 2<&-
+STR=$(dtc -I fs -O dts /sys/firmware/devicetree/base)
+SUB='addi9036'
+if [[ "$STR" == *"$SUB"* ]]; then
+  echo "ADI camera already installed..."
+  exit 0
+fi
+
 #get images from ADI server
 wget -q "http://swdownloads.analog.com/cse/aditof/xavier_prepare/Image"
 if [ $? -ne 0 ]; then
