@@ -11,7 +11,7 @@ endif()
 
 ############################### Version #######################################
 set(ADITOF_VERSION_MAJOR 1)
-set(ADITOF_VERSION_MINOR 5)
+set(ADITOF_VERSION_MINOR 6)
 set(ADITOF_VERSION_PATCH 0)
 
 set(VERSION "${ADITOF_VERSION_MAJOR}.${ADITOF_VERSION_MINOR}.${ADITOF_VERSION_PATCH}")
@@ -37,6 +37,10 @@ endif()
 
 add_subdirectory(sdk)
 add_subdirectory(apps)
+if (MSVC)
+        add_subdirectory(tools/deps/wingetopt)
+endif(MSVC)
+add_subdirectory(tools/eeprom-tool)
 
 if (WITH_EXAMPLES)
         add_subdirectory(examples)
